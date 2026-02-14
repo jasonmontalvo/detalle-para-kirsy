@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Kirsy 💖</title>
+
+<style>
+:root {
+  --rosa: #ff69b4;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Segoe Script', cursive;
+  background: linear-gradient(180deg, #04001a, #1b0033, #33004d);
+  color: white;
+  text-align: center;
+}
+
+/* Fondo mágico */
+.nebula {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,182,193,0.4), transparent 70%);
+  filter: blur(70px);
+  animation: float 40s infinite alternate;
+}
+@keyframes float {
+  to { transform: translateY(-200px); }
+}
+
+/* Estrellas */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: move linear infinite, twinkle 3s infinite alternate;
+}
+@keyframes move { to { transform: translateY(-100vh); } }
+@keyframes twinkle { from { opacity:.3 } to { opacity:1 } }
+
+/* Luna */
+.moon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle at 30% 30%, #fff, #f5f3ce);
+  border-radius: 50%;
+  box-shadow: 0 0 50px white;
+}
+
+/* Contenido */
+.container {
+  margin-top: 120px;
+  padding: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Rosas */
+.roses {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.rose {
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  background: radial-gradient(circle, #ffc0cb, var(--rosa));
+  border-radius: 50%;
+  box-shadow: 0 0 35px var(--rosa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+  to { box-shadow: 0 0 55px hotpink; }
+}
+
+.letter {
+  display: none;
+  background: rgba(255,240,245,0.95);
+  color: #b03060;
+  padding: 12px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+/* Botón canción */
+.song-btn {
+  margin-top: 25px;
+  padding: 12px 22px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(45deg, pink, hotpink);
+  color: white;
+  font-size: 16px;
+}
+
+/* Mensaje final */
+#finalMessage {
+  display: none;
+  margin-top: 35px;
+  font-size: 22px;
+  color: pink;
+  text-shadow: 0 0 20px white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="nebula" style="top:40px; left:-200px;"></div>
+<div class="nebula" style="top:300px; right:-200px;"></div>
+<div class="moon"></div>
+
+<div class="container">
+<h1>Para ti, Kirsy 💖</h1>
+<p>Este detalle lo hice pensando en ti ✨</p>
+
+<button class="song-btn"
+onclick="window.open('https://www.youtube.com/results?search_query=querer+querernos+canserbero','_blank')">
+Escuchar nuestra canción 🎶
+</button>
+
+<div class="roses">
+  <div onclick="openLetter(1)">
+    <div class="rose">🌹</div>
+    <div class="letter" id="l1">Kirsy, eres mi pensamiento favorito.</div>
+  </div>
+  <div onclick="openLetter(2)">
+    <div class="rose">🌹</div>
+    <div class="letter" id="l2">Aunque la distancia exista, mi corazón está contigo.</div>
+  </div>
+  <div onclick="openLetter(3)">
+    <div class="rose">🌹</div>
+    <div class="letter" id="l3">Cada estrella me recuerda lo mucho que te amo.</div>
+  </div>
+  <div onclick="openLetter(4)">
+    <div class="rose">🌹</div>
+    <div class="letter" id="l4">Este detalle es para el amor de mi vida.</div>
+  </div>
+</div>
+
+<div id="finalMessage">
+Gracias por estar a mi lado, Kirsy 💖<br>
+Esto lo hice con todo mi corazón 🌙✨
+</div>
+</div>
+
+<script>
+for(let i=0;i<140;i++){
+ let s=document.createElement('div');
+ s.className='star';
+ s.style.left=Math.random()*innerWidth+'px';
+ s.style.top=Math.random()*innerHeight+'px';
+ s.style.animationDuration=(20+Math.random()*30)+'s';
+ document.body.appendChild(s);
+}
+
+let opened=0;
+function openLetter(n){
+ let l=document.getElementById('l'+n);
+ if(l.style.display!=='block'){
+   l.style.display='block';
+   opened++;
+ }
+ if(opened===4){
+   document.getElementById('finalMessage').style.display='block';
+ }
+}
+</script>
+
+</body>
+</html>
